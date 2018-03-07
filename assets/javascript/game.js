@@ -44,21 +44,20 @@ updateGuessesLeft();
 document.onkeyup = function (event) {
     guessesLeft--;
     var userGuess = String.fromCharCode(event.keyCode).toLocaleLowerCase();
-
+    console.log(computerGuess);
     guessedLetters.push(userGuess);
     updateGuessesLeft();
     updateGuessesSoFar();
 
-        if (guessesLeft > 0) {
+        if (computerGuess === userGuess) {
             wins++;
-            document.querySelector ('wins').innerHTML = "wins: " + wins;
+            document.querySelector('#wins').innerHTML = "wins: " + wins;
             alert("yes, you are psychic!");
             reset();
 
         }else if (guessesLeft == 0) {
             losses ++;
             document.querySelector('#losses').innerHTML = "Losses: " + losses;
-            // alert("Sorry, you're not psychic, maybe try again?");
             alert("Not quite buddy, try a little harder?");
             reset();
         }
